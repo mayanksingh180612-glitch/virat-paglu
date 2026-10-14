@@ -1,0 +1,563 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>King Kohli | Mayank Singh</title>
+<meta name="description" content="Explore Virat Kohli's legendary cricket career, records, centuries and best moments. Created by Mayank Singh.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --bg: #080a0e;
+  --panel: #11151c;
+  --gold: #f6c453;
+  --muted: #9ba4b4;
+  --white: #f6f7fb;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: Inter, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--white);
+  overflow-x: hidden;
+}
+a { color: inherit; text-decoration: none; }
+button { font: inherit; cursor: pointer; }
+::selection { background: var(--gold); color: #080a0e; }
+
+nav {
+  position: fixed;
+  z-index: 20;
+  top: 0;
+  width: 100%;
+  padding: 19px 7%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(8,10,14,.78);
+  backdrop-filter: blur(18px);
+  border-bottom: 1px solid #ffffff12;
+}
+.logo { font-size: 20px; font-weight: 900; letter-spacing: -1px; }
+.logo span { color: var(--gold); }
+.navlinks { display: flex; gap: 27px; align-items: center; }
+.navlinks a { font-size: 12px; color: #c4c9d3; transition: .3s; }
+.navlinks a:hover { color: var(--gold); }
+.creator { font-size: 11px; color: var(--muted); }
+.creator b { color: var(--gold); }
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  padding: 130px 7% 75px;
+  background:
+    linear-gradient(90deg, #080a0e 0%, #080a0ee8 44%, #080a0e35 100%),
+    url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=2000&q=85')
+    center/cover no-repeat;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(0deg, var(--bg), transparent 30%, transparent 80%, #080a0e70);
+}
+.hero-content { max-width: 730px; position: relative; z-index: 2; }
+.eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 9px;
+  border: 1px solid #f6c45350;
+  color: var(--gold);
+  border-radius: 30px;
+  padding: 9px 15px;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 26px;
+}
+.dot { width: 6px; height: 6px; background: var(--gold); border-radius: 50%; }
+.hero h1 {
+  font-size: clamp(58px, 10vw, 120px);
+  line-height: .91;
+  letter-spacing: -7px;
+  font-weight: 900;
+}
+.hero h1 span { color: var(--gold); display: block; }
+.hero p { max-width: 480px; color: #bdc3ce; line-height: 1.9; margin: 26px 0; font-size: 14px; }
+.buttons { display: flex; gap: 13px; flex-wrap: wrap; }
+.btn {
+  padding: 15px 21px;
+  border-radius: 6px;
+  font-size: 12px;
+  font-weight: 800;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  transition: .3s;
+  border: 1px solid transparent;
+}
+.btn-gold { background: var(--gold); color: #121212; }
+.btn-gold:hover { transform: translateY(-3px); box-shadow: 0 10px 30px #f6c45335; }
+.btn-outline { border-color: #ffffff40; color: white; background: #ffffff08; }
+.btn-outline:hover { border-color: var(--gold); }
+.hero-bottom {
+  position: absolute; z-index: 2; bottom: 28px; left: 7%; right: 7%;
+  display: flex; justify-content: space-between; align-items: center;
+  color: #9ba4b4; font-size: 10px; letter-spacing: 2px;
+}
+.scroll { color: var(--gold); }
+
+section { padding: 90px 7%; }
+.section-top { margin-bottom: 34px; }
+.kicker { color: var(--gold); font-size: 10px; letter-spacing: 3px; font-weight: 800; }
+h2 { font-size: clamp(30px, 5vw, 49px); letter-spacing: -2px; margin-top: 12px; }
+.section-desc { color: var(--muted); font-size: 13px; line-height: 1.8; margin-top: 12px; max-width: 570px; }
+
+.stats-grid {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px;
+}
+.stat-card {
+  padding: 27px 22px; background: linear-gradient(145deg,#171c25,#0e1117);
+  border: 1px solid #ffffff10; border-radius: 12px; transition: .3s;
+}
+.stat-card:hover { transform: translateY(-5px); border-color: #f6c45365; }
+.stat-card .number { color: var(--gold); font-size: clamp(28px,4vw,43px); font-weight: 900; letter-spacing: -2px; }
+.stat-card .label { margin-top: 12px; font-size: 11px; color: #e1e4eb; }
+.stat-card small { display: block; margin-top: 7px; color: var(--muted); font-size: 10px; line-height: 1.6; }
+
+.dark-section { background: #0c0f15; }
+.records { display: grid; grid-template-columns: repeat(3,1fr); gap: 16px; }
+.record {
+  padding: 26px; border: 1px solid #ffffff12; background: #11151c;
+  border-radius: 12px; transition: .3s;
+}
+.record:hover { border-color: var(--gold); transform: translateY(-4px); }
+.record .emoji { font-size: 26px; }
+.record h3 { font-size: 17px; margin: 19px 0 10px; }
+.record p { color: var(--muted); font-size: 12px; line-height: 1.8; }
+.record a { display: inline-block; margin-top: 20px; color: var(--gold); font-size: 11px; font-weight: 800; }
+
+.timeline { border-left: 1px solid #f6c45360; margin: 35px 0 0 8px; padding-left: 28px; }
+.moment { position: relative; padding: 0 0 33px; }
+.moment::before {
+  content: ""; position: absolute; left: -34px; top: 4px;
+  width: 10px; height: 10px; border-radius: 50%; background: var(--gold);
+  box-shadow: 0 0 15px #f6c45350;
+}
+.year { color: var(--gold); font-size: 11px; font-weight: 800; letter-spacing: 2px; }
+.moment h3 { margin: 8px 0; font-size: 18px; }
+.moment p { color: var(--muted); font-size: 12px; line-height: 1.8; max-width: 600px; }
+
+.video-grid { display: grid; grid-template-columns: repeat(3,1fr); gap: 17px; }
+.video-card {
+  overflow: hidden; border-radius: 12px; background: var(--panel);
+  border: 1px solid #ffffff12; transition: .3s;
+}
+.video-card:hover { transform: translateY(-5px); border-color: #f6c45360; }
+.video-thumb {
+  height: 180px; display: flex; align-items: center; justify-content: center;
+  position: relative; background-size: cover; background-position: center;
+}
+.video-thumb::before { content: ""; position: absolute; inset: 0; background: #0007; }
+.play {
+  z-index: 1; width: 52px; height: 52px; border-radius: 50%;
+  background: var(--gold); color: #111; display: grid; place-items: center;
+  font-size: 19px; transition: .3s;
+}
+.video-card:hover .play { transform: scale(1.12); }
+.video-info { padding: 20px; }
+.video-info small { color: var(--gold); font-size: 9px; letter-spacing: 2px; font-weight: 800; }
+.video-info h3 { font-size: 15px; margin: 10px 0; }
+.video-info p { color: var(--muted); font-size: 11px; line-height: 1.7; }
+.video-info a { display: inline-block; margin-top: 15px; color: var(--gold); font-size: 11px; font-weight: 800; }
+
+.video-frame {
+  display: none; margin-top: 28px; border-radius: 12px;
+  overflow: hidden; border: 1px solid #ffffff20;
+}
+.video-frame.active { display: block; }
+.video-frame iframe { width: 100%; aspect-ratio: 16/9; border: 0; display: block; }
+
+footer { border-top: 1px solid #ffffff12; padding: 35px 7%; display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+footer p { font-size: 11px; color: var(--muted); line-height: 1.8; }
+footer strong { color: var(--gold); }
+.backtop { color: var(--gold); font-size: 12px; }
+
+.reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s, transform .7s; }
+.reveal.show { opacity: 1; transform: translateY(0); }
+
+@media(max-width:850px) {
+  .navlinks { gap: 13px; }
+  .navlinks a { font-size: 10px; }
+  .creator { display: none; }
+  .stats-grid { grid-template-columns: repeat(2,1fr); }
+  .records,.video-grid { grid-template-columns: repeat(2,1fr); }
+  .hero h1 { letter-spacing: -4px; }
+}
+@media(max-width:560px) {
+  nav { padding: 17px 5%; }
+  .logo { font-size: 17px; }
+  .navlinks { gap: 12px; }
+  .navlinks a { font-size: 9px; }
+  .navlinks a:nth-child(2),.navlinks a:nth-child(3) { display: none; }
+  .hero { padding: 120px 6% 90px; background-position: 58% center; }
+  .hero h1 { font-size: 65px; letter-spacing: -4px; }
+  .hero p { font-size: 12px; }
+  .hero-bottom { left: 6%; right: 6%; font-size: 8px; }
+  section { padding: 65px 6%; }
+  .stats-grid { gap: 10px; }
+  .stat-card { padding: 19px 15px; }
+  .records,.video-grid { grid-template-columns: 1fr; }
+  .video-thumb { height: 210px; }
+  h2 { letter-spacing: -1px; }
+}
+@media(prefers-reduced-motion:reduce) {
+  html { scroll-behavior: auto; }
+  *,*::before,*::after { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+  .reveal { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="logo">KING<span>.</span>KOHLI</a>
+  <div class="navlinks">
+    <a href="#stats">STATS</a>
+    <a href="#records">RECORDS</a>
+    <a href="#journey">JOURNEY</a>
+    <a href="#videos">VIDEOS</a>
+  </div>
+  <div class="creator">MADE BY <b>MAYANK SINGH</b></div>
+</nav>
+
+<header class="hero" id="home">
+  <div class="hero-content">
+    <div class="eyebrow"><span class="dot"></span> THE LEGACY OF A KING</div>
+    <h1>VIRAT <span>KOHLI.</span></h1>
+    <p>
+      Passion. Discipline. Greatness. Explore the incredible journey of
+      India's modern cricket legend — from a young Delhi boy to one of
+      the greatest batters the game has ever seen.
+    </p>
+    <div class="buttons">
+      <a href="#videos" class="btn btn-gold">▶ WATCH BEST MOMENTS</a>
+      <a href="#stats" class="btn btn-outline">EXPLORE CAREER ↗</a>
+    </div>
+  </div>
+  <div class="hero-bottom">
+    <span>INDIA 🇮🇳 · CRICKET LEGEND</span>
+    <span class="scroll">SCROLL TO EXPLORE ↓</span>
+  </div>
+</header>
+
+<section id="stats">
+  <div class="section-top reveal">
+    <div class="kicker">01 / THE NUMBERS</div>
+    <h2>A CAREER OF <span style="color:var(--gold)">GREATNESS.</span></h2>
+    <p class="section-desc">
+      International career statistics. These figures are a snapshot and
+      may change as Kohli continues his ODI career.
+    </p>
+  </div>
+
+  <div class="stats-grid">
+    <div class="stat-card reveal">
+      <div class="number">15,109</div>
+      <div class="label">ODI RUNS</div>
+      <small>Career total shown in the ICC profile snapshot</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">55</div>
+      <div class="label">ODI CENTURIES</div>
+      <small>One of the greatest century-makers in ODI history</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">58.79</div>
+      <div class="label">ODI BATTING AVERAGE</div>
+      <small>Remarkable consistency in the 50-over format</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">9,230</div>
+      <div class="label">TEST RUNS</div>
+      <small>123 Tests · 30 centuries · Test career completed in 2025</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">4,188</div>
+      <div class="label">T20 INTERNATIONAL RUNS</div>
+      <small>125 matches in the international T20 format</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">80+</div>
+      <div class="label">INTERNATIONAL CENTURIES</div>
+      <small>A legendary record across international formats</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">183</div>
+      <div class="label">HIGHEST ODI SCORE</div>
+      <small>Against Pakistan in the Asia Cup, 2012</small>
+    </div>
+    <div class="stat-card reveal">
+      <div class="number">2008</div>
+      <div class="label">INTERNATIONAL DEBUT YEAR</div>
+      <small>His ODI journey began against Sri Lanka</small>
+    </div>
+  </div>
+  <p style="font-size:10px;color:var(--muted);margin-top:20px;line-height:1.8">
+    Source: ICC player profile and BCCI statistics. Numbers can vary by
+    update date; check the official profiles for the latest figures.
+  </p>
+</section>
+
+<section class="dark-section" id="records">
+  <div class="section-top reveal">
+    <div class="kicker">02 / ICONIC ACHIEVEMENTS</div>
+    <h2>RECORDS THAT <span style="color:var(--gold)">INSPIRE.</span></h2>
+    <p class="section-desc">Some unforgettable milestones from the King’s career.</p>
+  </div>
+  <div class="records">
+    <article class="record reveal">
+      <div class="emoji">👑</div>
+      <h3>50 ODI Centuries</h3>
+      <p>Became the first batter to score 50 ODI hundreds during the 2023 World Cup semi-final against New Zealand.</p>
+      <a href="https://www.youtube.com/results?search_query=Virat+Kohli+50th+ODI+century+official+highlights" target="_blank" rel="noopener">WATCH THE MOMENT ↗</a>
+    </article>
+    <article class="record reveal">
+      <div class="emoji">🏆</div>
+      <h3>2024 T20 World Cup</h3>
+      <p>Scored a crucial 76 in the final against South Africa and earned Player of the Match honours.</p>
+      <a href="https://www.youtube.com/results?search_query=Virat+Kohli+76+T20+World+Cup+2024+final+highlights" target="_blank" rel="noopener">WATCH THE FINAL ↗</a>
+    </article>
+    <article class="record reveal">
+      <div class="emoji">⚡</div>
+      <h3>The Chase Master</h3>
+      <p>Known for match-winning run chases, composure under pressure and extraordinary consistency.</p>
+      <a href="https://www.youtube.com/results?search_query=Virat+Kohli+best+run+chases+official+highlights" target="_blank" rel="noopener">WATCH THE CHASES ↗</a>
+    </article>
+    <article class="record reveal">
+      <div class="emoji">🔥</div>
+      <h3>IPL 2016 — 973 Runs</h3>
+      <p>Scored a record 973 runs in one IPL season, including four centuries, for Royal Challengers Bengaluru.</p>
+      <a href="https://www.youtube.com/results?search_query=Virat+Kohli+IPL+2016+973+runs+highlights" target="_blank" rel="noopener">RELIVE 2016 ↗</a>
+    </article>
+    <article class="record reveal">
+      <div class="emoji">🇮🇳</div>
+      <h3>2011 World Cup Champion</h3>
+      <p>Part of India's victorious 2011 Cricket World Cup team early in his international career.</p>
+      <a href="https://www.youtube.com/results?search_query=India+2011+World+Cup+Virat+Kohli+highlights" target="_blank" rel="noopener">RELIVE THE WIN ↗</a>
+    </article>
+    <article class="record reveal">
+      <div class="emoji">💙</div>
+      <h3>Champions Trophy 2025</h3>
+      <p>Helped India win the 2025 Champions Trophy, including a century against Pakistan in the group stage.</p>
+      <a href="https://www.youtube.com/results?search_query=Virat+Kohli+Pakistan+century+Champions+Trophy+2025+highlights" target="_blank" rel="noopener">WATCH HIGHLIGHTS ↗</a>
+    </article>
+  </div>
+</section>
+
+<section id="journey">
+  <div class="section-top reveal">
+    <div class="kicker">03 / THE JOURNEY</div>
+    <h2>FROM DELHI TO <span style="color:var(--gold)">HISTORY.</span></h2>
+    <p class="section-desc">The milestones that shaped an extraordinary cricketing legacy.</p>
+  </div>
+  <div class="timeline">
+    <article class="moment reveal">
+      <div class="year">2008</div>
+      <h3>The Beginning</h3>
+      <p>Captained India to the Under-19 World Cup title and made his ODI debut for India.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2011</div>
+      <h3>World Champion</h3>
+      <p>Won the ICC Cricket World Cup with India and scored a century against Bangladesh in the tournament.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2012</div>
+      <h3>The 183 Against Pakistan</h3>
+      <p>Produced a remarkable ODI innings of 183 in the Asia Cup against Pakistan.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2016</div>
+      <h3>The IPL Season of a Lifetime</h3>
+      <p>Scored 973 runs in the IPL season, setting a record for the most runs in a single edition.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2018</div>
+      <h3>Dominance Around the World</h3>
+      <p>Delivered outstanding performances across formats and led India to a historic Test series win in Australia in 2018–19.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2022</div>
+      <h3>That Unforgettable Melbourne Night</h3>
+      <p>His unbeaten 82 against Pakistan in the T20 World Cup became one of the most celebrated innings in T20 cricket.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2023</div>
+      <h3>Number 50</h3>
+      <p>Scored his 50th ODI century in the World Cup semi-final and finished the tournament with 765 runs.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2024</div>
+      <h3>T20 World Cup Glory</h3>
+      <p>Played a defining role in India's T20 World Cup final victory before retiring from T20 internationals.</p>
+    </article>
+    <article class="moment reveal">
+      <div class="year">2025</div>
+      <h3>Another ICC Trophy</h3>
+      <p>Helped India win the Champions Trophy and announced his retirement from Test cricket.</p>
+    </article>
+  </div>
+</section>
+
+<section class="dark-section" id="videos">
+  <div class="section-top reveal">
+    <div class="kicker">04 / VIDEO LIBRARY</div>
+    <h2>RELIVE THE <span style="color:var(--gold)">MAGIC.</span></h2>
+    <p class="section-desc">
+      Explore match highlights, unforgettable centuries, sixes and legendary
+      performances. Choose a moment to watch an available video.
+    </p>
+  </div>
+
+  <div class="video-grid">
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1531415074968-036ba1b575da?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>WORLD CUP · 2023</small>
+        <h3>Historic 50th ODI Century</h3>
+        <p>Kohli makes history against New Zealand in the semi-final.</p>
+        <a href="https://www.youtube.com/results?search_query=ICC+official+Virat+Kohli+50th+ODI+century+2023" target="_blank" rel="noopener">WATCH VIDEOS ↗</a>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1540747913346-19e32dc3e97e?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>T20 WORLD CUP · 2022</small>
+        <h3>82* Against Pakistan</h3>
+        <p>The unforgettable Melbourne chase, featuring a famous six off Haris Rauf.</p>
+        <a href="https://www.youtube.com/results?search_query=ICC+official+Virat+Kohli+82+Pakistan+Melbourne+2022+highlights" target="_blank" rel="noopener">WATCH VIDEOS ↗</a>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>T20 WORLD CUP · 2024</small>
+        <h3>76 in the World Cup Final</h3>
+        <p>A match-winning knock against South Africa in Barbados.</p>
+        <a href="https://www.youtube.com/results?search_query=ICC+official+Virat+Kohli+76+World+Cup+final+2024" target="_blank" rel="noopener">WATCH VIDEOS ↗</a>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1593766827228-8737b58cd6b2?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>IPL · 2016</small>
+        <h3>973 Runs in One Season</h3>
+        <p>Four centuries and a record-breaking IPL campaign.</p>
+        <a href="https://www.youtube.com/results?search_query=IPL+official+Virat+Kohli+2016+973+runs+highlights" target="_blank" rel="noopener">WATCH VIDEOS ↗</a>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>ODI · 2012</small>
+        <h3>183 Against Pakistan</h3>
+        <p>A legendary Asia Cup innings that announced his arrival.</p>
+        <a href="https://www.youtube.com/results?search_query=Virat+Kohli+183+Pakistan+Asia+Cup+2012+highlights" target="_blank" rel="noopener">WATCH VIDEOS ↗</a>
+      </div>
+    </article>
+
+    <article class="video-card reveal">
+      <div class="video-thumb" style="background-image:url('https://images.unsplash.com/photo-1508098682722-e99c643e7f0b?auto=format&fit=crop&w=700&q=80')">
+        <div class="play">▶</div>
+      </div>
+      <div class="video-info">
+        <small>ODI · 2019</small>
+        <h3>Brilliant Century vs West Indies</h3>
+        <p>A powerful innings in the 2019 ODI series.</p>
+        <a href="https://www.youtube.com/watch?v=x_prt6sDXUQ" target="_blank" rel="noopener">WATCH OFFICIAL HIGHLIGHTS ↗</a>
+      </div>
+    </article>
+  </div>
+
+  <div class="section-top reveal" style="margin-top:55px;margin-bottom:15px">
+    <div class="kicker">FEATURED VIDEO</div>
+    <h2 style="font-size:27px">Kohli's Century vs West Indies</h2>
+    <p class="section-desc">Official Windies Cricket match highlights.</p>
+  </div>
+
+  <div class="video-frame active">
+    <iframe
+      src="https://www.youtube-nocookie.com/embed/x_prt6sDXUQ"
+      title="Virat Kohli century against West Indies 2019 official highlights"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  </div>
+  <p style="font-size:10px;color:var(--muted);margin-top:15px;line-height:1.8">
+    Videos are hosted by their respective publishers. Some may be unavailable
+    in certain regions or may change over time. The other links open YouTube
+    search results so you can find currently available highlights.
+  </p>
+</section>
+
+<footer>
+  <div>
+    <a href="#home" class="logo">KING<span>.</span>KOHLI</a>
+    <p style="margin-top:12px">A fan-made tribute to a cricket legend.</p>
+    <p>Created with ❤️ by <strong>Mayank Singh</strong></p>
+  </div>
+  <div>
+    <p>UNOFFICIAL FAN WEBSITE</p>
+    <p>Not affiliated with Virat Kohli, BCCI or ICC.</p>
+    <p style="margin-top:10px">© <span id="year"></span> Mayank Singh</p>
+  </div>
+  <a class="backtop" href="#home">BACK TO TOP ↑</a>
+</footer>
+
+<script>
+  // Reveal sections smoothly as you scroll.
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("show");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.12 });
+
+  document.querySelectorAll(".reveal").forEach((element) => {
+    observer.observe(element);
+  });
+
+  // Current copyright year.
+  document.getElementById("year").textContent = new Date().getFullYear();
+</script>
+
+</body>
+</html>
